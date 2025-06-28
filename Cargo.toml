@@ -1,0 +1,12 @@
+[package]
+name = "ros2_worker_node"
+version = "0.1.0"
+edition = "2024"
+
+[lib]
+
+
+[dependencies]
+rclrs = "0.4.1"
+rosidl_runtime_rs = "0.4.1"
+ros2_worker_node_derive = { path = "./ros2_worker_node_derive" }

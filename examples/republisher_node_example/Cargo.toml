@@ -1,0 +1,11 @@
+[package]
+name = "republisher_node_example"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+rclrs = "*"
+example_interfaces = "*"
+anyhow = "1.0"
+rosidl_runtime_rs = "0.4.1"
+ros2_worker_node = { path = "../../../ros2_worker_node" }
