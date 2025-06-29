@@ -1,19 +1,19 @@
 use rclrs::{Node, WorkScope};
 use std::{
-    sync::{atomic::AtomicBool, Arc, Condvar, Mutex},
+    sync::{Arc, Condvar, Mutex, atomic::AtomicBool},
     thread::{self, JoinHandle},
     time::Duration,
 };
 
-pub use ros2_worker_node_derive::RosNode;
+pub use ros2_worker_node_derive::WorkerNode;
 
-pub struct RosNode<Payload> {
+pub struct WorkerNode<Payload> {
     _node: Arc<Node>,
     _worker: rclrs::Worker<Payload>,
     _storage: Vec<Box<dyn std::any::Any>>,
 }
 
-impl<Payload> RosNode<Payload>
+impl<Payload> WorkerNode<Payload>
 where
     Payload: WorkScope,
 {

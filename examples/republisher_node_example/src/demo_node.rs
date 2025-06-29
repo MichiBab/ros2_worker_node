@@ -5,9 +5,9 @@ use example_interfaces::{
     srv::{AddTwoInts, AddTwoInts_Request, AddTwoInts_Response},
 };
 use rclrs::ServiceOptions;
-use ros2_worker_node::{RosNode, TimerOptions};
+use ros2_worker_node::{TimerOptions, WorkerNode};
 
-#[derive(RosNode)]
+#[derive(WorkerNode)]
 pub(crate) struct MyRosNodeExample {
     number: i64,
     number_publisher: rclrs::Publisher<std_msgs::msg::Int64>,
@@ -42,10 +42,10 @@ impl MyRosNodeExample {
         AddTwoInts_Response { sum: self.number }
     }
 
-    pub fn new_node(node: &rclrs::Node) -> Result<RosNode<Self>, rclrs::RclrsError> {
+    pub fn new_node(node: &rclrs::Node) -> Result<WorkerNode<Self>, rclrs::RclrsError> {
         let payload = MyRosNodeExample::new(node, "numbers");
 
-        let mut ros_node = RosNode::new(node, payload);
+        let mut ros_node = WorkerNode::new(node, payload);
 
         ros_node.create_service::<AddTwoInts, _>(
             ServiceOptions::new("add_two_ints_to_number"),
