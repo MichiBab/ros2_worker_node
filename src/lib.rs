@@ -1,6 +1,6 @@
 use rclrs::{Node, WorkScope};
 use std::{
-    sync::{Arc, Condvar, Mutex, atomic::AtomicBool},
+    sync::{atomic::AtomicBool, Arc, Condvar, Mutex},
     thread::{self, JoinHandle},
     time::Duration,
 };
